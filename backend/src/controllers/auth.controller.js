@@ -37,9 +37,9 @@ export async function singup(req, res) {
 
         res.cookie("jwt", token, {
             maxAge: 7 * 24 * 60 * 60 * 1000,
-            httpOnly: true, // XSS Attacks
-            sameSite: "strict", // CSRF Attacks
-            secure: process.env.NODE_ENV === "production"
+            httpOnly: true, // Prevent XSS Attacks
+            sameSite: "strict", // Prevent CSRF Attacks
+            secure: process.env.NODE_ENV === "production" // https
         })
 
         res.status(201).json({ success: true, user: newUser })
