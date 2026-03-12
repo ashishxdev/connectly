@@ -7,6 +7,9 @@ import NotificationsPage from "./pages/NotificationsPage"
 import SignUpPage from "./pages/SignUpPage"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from './pages/HomePage'
+import { Toaster } from "react-hot-toast"
+import { useQuery } from '@tanstack/react-query'
+import { axiosInstance } from './lib/axios'
 
 
 const router = createBrowserRouter([
@@ -41,9 +44,21 @@ const router = createBrowserRouter([
 
 ])
 const App = () => {
+
+  const { data } = useQuery({
+    queryKey: ["todos"],
+    queryFn: async () => {
+      const res = await axiosInstance.get("/auth/me");
+      return res.data;
+    },
+    retry: false, // auth check
+  })
+  console.log(data)
+
   return (
     <div className='h-screen' data-theme="night">
       <RouterProvider router={router} />
+      <Toaster />
     </div>
   )
 }
