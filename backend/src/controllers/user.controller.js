@@ -8,8 +8,8 @@ export async function getRecommendedUsers(req, res) {
 
         const recommendedUsers = await User.find({
             $and: [
-                { _id: { $ne: currentUser } }, // exclude current user
-                { $id: { $nin: currentUser.friends } }, // exclude current user's friends
+                { _id: { $ne: currentUserId } }, // exclude current user
+                { _id: { $nin: currentUser.friends } }, // exclude current user's friends
                 { isOnboarded: true },
             ]
         });
@@ -67,7 +67,7 @@ export async function sendFriendRequest(req, res) {
             sender: myId,
             recipient: recipientId,
         })
-        res.satus(201).json(friendRequest)
+        res.status(201).json(friendRequest)
 
     } catch (error) {
         console.error("Error in sendFriendRequest controller", error.message);
@@ -94,17 +94,17 @@ export async function acceptFriendRequest(req, res) {
 
         // add each user to the other's friend array
         // @addToSet: add elements to an array only if they do not already exist.
-        await User.findByIdAndUpdate(friendRequest.sender), {
+        await User.findByIdAndUpdate(friendRequest.sender, {
             $addToSet: {
                 friends: friendRequest.recipient
             }
-        }
+        })
 
-        await User.findByIdAndUpdate(friendRequest.recipient), {
+        await User.findByIdAndUpdate(friendRequest.recipient, {
             $addToSet: {
                 friends: friendRequest.sender
             }
-        }
+        })
         res.status(200).json({ message: "Friend request accepted " })
 
     } catch (error) {
