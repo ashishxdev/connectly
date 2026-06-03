@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router';
-import { ShipWheelIcon } from 'lucide-react';
+import { SparklesIcon } from 'lucide-react';
 import useLogin from '../hooks/useLogin.js';
 import { useThemeStore } from '../store/useThemeStore.js';
 
@@ -27,12 +27,14 @@ const LoginPage = () => {
                 {/* LOGIN FORM SECTION */}
                 <div className="w-full lg:w-1/2 p-4 sm:p-8 flex flex-col">
                     {/* LOGO */}
-                    <div className="mb-4 flex items-center justify-start gap-2">
-                        <ShipWheelIcon className="size-9 text-primary" />
-                        <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary  tracking-wider">
+                    <Link to="/" className="mb-6 flex items-center gap-2.5 hover:opacity-90 transition-opacity w-fit">
+                        <div className="size-10 rounded-xl bg-linear-to-tr from-primary to-secondary flex items-center justify-center text-primary-content shadow-lg shadow-primary/20 hover:scale-105 transition-transform duration-300">
+                            <SparklesIcon className="size-5 text-white animate-pulse" />
+                        </div>
+                        <span className="text-3xl font-extrabold font-display tracking-tight bg-clip-text text-transparent bg-linear-to-r from-primary via-secondary to-accent">
                             Connectly
                         </span>
-                    </div>
+                    </Link>
 
                     {/* ERROR MESSAGE DISPLAY */}
                     {error && (
@@ -47,7 +49,7 @@ const LoginPage = () => {
                                 <div>
                                     <h2 className="text-xl font-semibold">Welcome Back</h2>
                                     <p className="text-sm opacity-70">
-                                        Sign in to your account to continue your language journey
+                                        Sign in to your account to connect with friends
                                     </p>
                                 </div>
 
@@ -110,13 +112,13 @@ const LoginPage = () => {
                     <div className="max-w-md p-8">
                         {/* Illustration */}
                         <div className="relative aspect-square max-w-sm mx-auto">
-                            <img src="/i.png" alt="Language connection illustration" className="w-full h-full" />
+                            <img src="/i.png" alt="Social connection illustration" className="w-full h-full" />
                         </div>
 
                         <div className="text-center space-y-3 mt-6">
-                            <h2 className="text-xl font-semibold">Connect with language partners worldwide</h2>
+                            <h2 className="text-xl font-semibold">Connect with friends worldwide</h2>
                             <p className="opacity-70">
-                                Practice conversations, make friends, and improve your language skills together
+                                Share moments, chat in real-time, and make crystal-clear calls together
                             </p>
                         </div>
                     </div>

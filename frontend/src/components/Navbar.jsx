@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import useAuthUser from "../hooks/useAuthUser.js";
-import { BellIcon, LogOutIcon, ShipWheelIcon } from "lucide-react";
+import { BellIcon, LogOutIcon, SparklesIcon } from "lucide-react";
 import useLogout from "../hooks/useLogout";
 import ThemeSelector from "./ThemeSelector.jsx";
 
@@ -19,9 +19,11 @@ const Navbar = () => {
                     {isChatPage && (
                         <div className="pl-5">
                             <Link to="/" className="flex items-center gap-2.5">
-                                <ShipWheelIcon className="size-9 text-primary" />
-                                <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary  tracking-wider">
-                                    Streamify
+                                <div className="size-10 rounded-xl bg-linear-to-tr from-primary to-secondary flex items-center justify-center text-primary-content shadow-lg shadow-primary/20 hover:scale-105 transition-transform duration-300">
+                                    <SparklesIcon className="size-5 text-white animate-pulse" />
+                                </div>
+                                <span className="text-3xl font-extrabold font-display tracking-tight bg-clip-text text-transparent bg-linear-to-r from-primary via-secondary to-accent">
+                                    Connectly
                                 </span>
                             </Link>
                         </div>

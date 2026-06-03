@@ -6,6 +6,7 @@ import OnboardingPage from "./pages/OnboardingPage"
 import NotificationsPage from "./pages/NotificationsPage"
 import SignUpPage from "./pages/SignUpPage"
 import HomePage from './pages/HomePage'
+import LandingPage from './pages/LandingPage'
 import { Toaster } from "react-hot-toast"
 import { Navigate, Route, Routes } from "react-router"
 import PageLoader from './components/PageLoader.jsx'
@@ -28,12 +29,16 @@ const App = () => {
     <div className='h-screen' data-theme={theme}>
       <Routes>
         <Route path='/' element={
-          isAuthenticated && isOnboarded ? (
-            <Layout showSidebar={true}>
-              <HomePage />
-            </Layout>
+          isAuthenticated ? (
+            isOnboarded ? (
+              <Layout showSidebar={true}>
+                <HomePage />
+              </Layout>
+            ) : (
+              <Navigate to="/onboarding" />
+            )
           ) : (
-            <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            <LandingPage />
           )
         } />
         <Route path='/signup' element={!isAuthenticated ? <SignUpPage /> : <Navigate to={
