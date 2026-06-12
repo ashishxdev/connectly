@@ -1,6 +1,6 @@
 # Connectly
 
-A language exchange social platform where you can find native speakers, chat in real time, and hop on video calls.
+A social platform where you can find friends, chat in real time, and hop on video calls.
 
 ## What it does
 
